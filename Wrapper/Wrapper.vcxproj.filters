@@ -15,13 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\QuickBMSWrapper\QuickBMSWrapper\QuickBMSWrapper.cpp">
+    <ClCompile Include="QuickBMSWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\QuickBMSWrapper\QuickBMSWrapper\QuickBMSWrapper.h">
+    <ClInclude Include="QuickBMSWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="quickbms.dll" />
   </ItemGroup>
 </Project>
