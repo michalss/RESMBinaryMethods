@@ -29,12 +29,21 @@ namespace RESM.AlgosComps
         public enum DeCompType
         {
             zlib,
-            lzo1x
+            lzo1x, 
+            lz4,
+            deflate,
+            lzo1a,
+            lzss
+
         }
         public enum CompType
         {
             zlib_compress,
-            lzo1x_compress
+            lzo1x_compress,
+            lz4_compress,
+            deflate_compress,
+            lzo1a_compress,
+            lzss_compress
         }
 
         public enum EcryptType
