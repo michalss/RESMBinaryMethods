@@ -42,9 +42,9 @@ class Program
         };
 
 
-        Console.WriteLine($"Input size {compressed_data_lzo1a.Length}");
+        Console.WriteLine($"Input size {compressed_data_zlib.Length}");
 
-        var bouter = algo.Decompress(Algos.DeCompType.lzo1a, compressed_data_lzo1a, compressed_data_lzo1a.Length);
+        var bouter = algo.Decompress(Algos.DeCompType.zlib, compressed_data_zlib, compressed_data_zlib.Length);
 
         Console.WriteLine($"Output after size {bouter.Length}");
 
@@ -53,13 +53,11 @@ class Program
             Console.WriteLine(System.Text.Encoding.Default.GetString(bouter, 0, bouter.Length));
         }
 
-        //byte[] bouter = System.Text.ASCIIEncoding.ASCII.GetBytes("RESHAX.COM is the best :D");
         Console.WriteLine($"Start compressing Data..");
-        var compData = algo.Compress(Algos.CompType.lzo1a_compress, bouter);
+        var compData = algo.Compress(Algos.CompType.zlib_compress, bouter);
         Console.WriteLine($"Compression done with size: {compData.Length}");
 
-
-        var decompressed = algo.Decompress(Algos.DeCompType.lzo1a, compData, compData.Length);
+        var decompressed = algo.Decompress(Algos.DeCompType.zlib, compData, compData.Length);
         Console.WriteLine($"DeCompression done with size: {decompressed.Length}");
 
         if (bouter.Length >= 0)
@@ -88,17 +86,21 @@ class Program
             Console.WriteLine("######### Decrypted #######");
             Console.WriteLine(System.Text.Encoding.Default.GetString(decrypted, 0, decrypted.Length));
         }
-        Console.Read();
+     
 
 
+        //WRITE COM DATA Example
+        byte[] dataTest = System.Text.ASCIIEncoding.ASCII.GetBytes("RESHAX.COM is the best :D Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+        Console.WriteLine($"Start compressing Data..");
+        var testCompress = algo.Compress(Algos.CompType.lzo1a_compress, dataTest);
+        Console.WriteLine($"Compression done with size: {testCompress.Length}");
 
         //some compress writter
-        //FileStream file = new FileStream("test_original.lz01a", FileMode.Create);
-        //BinaryWriter bw = new BinaryWriter(file);
-        //bw.Write(compData);
-        //bw.Close();
-        //file.Close();
-
+        FileStream file = new FileStream("test_original.compress", FileMode.Create);
+        BinaryWriter bw = new BinaryWriter(file);
+        bw.Write(testCompress);
+        bw.Close();
+        file.Close();
     }
 
 }
