@@ -7,6 +7,7 @@ class Program
     static void Main(string[] args)
     {
         var algo = new Algos();
+        //algo.Buffer = 200000;
 
         byte[] compressedData = new byte[] { 0x78, 0xDA, 0xAD, 0x8F, 0x31, 0x0E, 0xC3, 0x20, 0x10, 0x04, 0x7B, 0x24, 0xFE, 0x80, 0x94, 0x3A,
         0xB8, 0xA7, 0x8A, 0x53, 0x27, 0x45, 0x94, 0x17, 0x00, 0x3A, 0xC1, 0x29, 0x5C, 0x70, 0x1C, 0x23,
@@ -19,7 +20,7 @@ class Program
 
 
         Console.WriteLine($"Input size {compressedData.Length}");
-       
+
         var bouter = algo.Decompress(Algos.DeCompType.zlib, compressedData, compressedData.Length);
 
         Console.WriteLine($"Output after size {bouter.Length}");
@@ -40,6 +41,28 @@ class Program
         if (bouter.Length >= 0)
         {
             Console.WriteLine(System.Text.Encoding.Default.GetString(decompressed, 0, decompressed.Length));
+        }
+
+
+        ///ENCRYPTION
+        ///
+        Console.WriteLine("Encrypting...");
+        Console.WriteLine("Input = " + decompressed.Length.ToString() + " bytes");
+
+        byte[] key = new byte[] { 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44 };
+        byte[] iv = new byte[] { };
+
+        var crypted = algo.Encryption(Algos.EcryptType.aes_128_ecb, ref key, ref iv, ref decompressed);
+
+
+        Console.WriteLine("Decrypting...");
+        Console.WriteLine("Input = " + crypted.Length.ToString() + " bytes");
+
+        var decrypted = algo.Decryption(Algos.EcryptType.aes_128_ecb, ref key, ref iv, ref crypted);
+        if (decrypted.Length >= 0)
+        {
+            Console.WriteLine("######### Decrypted #######");
+            Console.WriteLine(System.Text.Encoding.Default.GetString(decrypted, 0, decrypted.Length));
         }
     }
 }
