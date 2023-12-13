@@ -137,9 +137,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="quickbms.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="QuickBMSWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>

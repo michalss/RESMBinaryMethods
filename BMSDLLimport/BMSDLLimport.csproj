@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RESM.AlgosComps\RESM.AlgosComps.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="quickbms.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

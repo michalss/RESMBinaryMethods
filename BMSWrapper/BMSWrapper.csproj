@@ -12,10 +12,4 @@
     <ProjectReference Include="..\QuickBMSWrapper\QuickBMSWrapper.vcxproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="quickbms.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

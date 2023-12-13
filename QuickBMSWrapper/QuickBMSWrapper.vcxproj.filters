@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="quickbms.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="QuickBMSWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
